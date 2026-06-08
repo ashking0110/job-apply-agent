@@ -1,0 +1,33 @@
+{
+  "manifest_version": 3,
+  "name": "Job Apply Agent",
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAxyAe/OdE09dmpjMqXax0x+kyg1PeKjIjORdSoXWcJQWcbQdmnbk1tfTWQiCAuoR8Oe3S0Fdl5nV9rPhju9dds8tQuQ6K4FrZIufFNXWrmuht9S4hPjeJLzlXkue+70ipKTNzR3HHDSQERLQjXvSOktCyy2ia9bayTrJ0rm1WDFKJwoFxEkRgP9wcnwk2u0lH+Jmh5fHLzg60OoZJAk1yVDz7PvBhk4uYBEkP8cEDm9nmvKK9CexZNTtPgcx+/rVzxqNkMoWUgbfF459l8n0JN4wwmWk6EmIkBWIjwhcHu3bOB7jtbeVzEDdMgYqg1XwxGfIQWf0iTarHveF0k0zazwIDAQAB",
+  "version": "0.1.0",
+  "description": "AI-powered job application assistant — tailors resume and cover letter to each posting.",
+  "permissions": ["activeTab", "tabs", "storage", "scripting", "identity"],
+  "host_permissions": [
+    "http://localhost:3001/*"
+  ],
+  "oauth2": {
+    "client_id": "477082079479-a6oldbmsj8u5dhn7plcf9s7ff8u4p76b.apps.googleusercontent.com",
+    "scopes": [
+      "openid",
+      "email",
+      "profile"
+    ]
+  },
+  "background": {
+    "service_worker": "dist/service-worker.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["dist/content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Job Apply Agent"
+  }
+}
